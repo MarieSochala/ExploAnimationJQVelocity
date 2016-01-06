@@ -1,0 +1,26 @@
+div {
+	padding: 5px;
+}
+
+.animation{ 
+position:relative;
+border-style: solid;
+width:50px;
+height:50px;
+}
+
+#a1 {
+	background-color: red;
+	border-color: red;
+}
+
+#a2 {
+	background-color: orange;
+	border-color: orange;
+}
+
+#a3 {
+	background-color: pink;
+	border-color: pink;
+}
+

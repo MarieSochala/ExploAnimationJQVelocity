@@ -31,7 +31,9 @@ Télécharger les fichiers ici : https://github.com/julianshapiro/velocity
 
 Inclure dans sa page avec cette balise :
 
- ```<script src="js/velocity.js" type="text/javascript"></script>```
+ ```html
+ <script src="js/velocity.js" type="text/javascript"></script>
+ ```
 
 Remplacer toutes les instances
 

@@ -1,0 +1,31 @@
+div {
+	padding: 20px;
+}
+
+.panier{
+font-size: 4em;
+float: right;
+}
+
+.chat .souris{
+	display:inline-block;
+	float:left;
+}
+
+a:hover {
+	color: black;
+}
+
+p{
+	border: solid 1px black;
+	width:150px;
+}
+
+img{
+	width:10%;
+}
+
+.ajout{
+	font-size: 3em;
+	border: solid 1px blue;
+}
