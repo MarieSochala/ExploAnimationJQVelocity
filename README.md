@@ -1,7 +1,3 @@
-# ExploAnimationJQVelocity
-
------
-
 # Animations avec jQuery et Velocity
 	
 #### Sommaire
@@ -21,27 +17,29 @@ Jquery est une librairie de JS qui permet de simplifier l'écriture du code Java
 Velocity est un moteur d'animation web avec la même API que "jQuery's $animate()".
 Il peut fonctionner avec ou sans JQuery Plus rapide que JQuery, il permet de mettre en place des animations en couleurs, transformations, boucles, "easing" (assouplissement), support du format SVG (Scalable Vector Graphic), et défilement. C'est une combinaison de JQuery  il est donc possible d'utiliser Velocity en solution toute faite au lieu de créer la votre ( ou de la lier sur JQuery ) : faire des boucles, des retours arrieres, programmer des retards, montrer /cacher des éléments, utiliser des éléments/opérations mathématiques  (+, -, *, /). Velocity remplace tout ce qu'il est possible de faire avec la fonction -animate- de JQuery.  
    
------
-
 ## 2. Installation
-   
+___
 ### **Velocity**
 
 Télécharger les fichiers ici : https://github.com/julianshapiro/velocity
 
 Inclure dans sa page avec cette balise :
 
- ```html
- <script src="js/velocity.js" type="text/javascript"></script>
- ```
+```html
+<script src="js/velocity.js" type="text/javascript"></script>
+```
 
 Remplacer toutes les instances
 
-``` $.animate() de JQuery par $.velocity().```
+```javascript
+$.animate() de JQuery par $.velocity().
+```
 
 Pour un démarrage rapide, voici le code HTML vous permettant d'accquerir Velocity sans avoir à le télécharger : 
 
-```<script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>```
+```html
+<script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+```
 
 Il est possible d'utiliser la console avec npm ou bower : npm install velocity-animate / bower install velocity
 
@@ -51,11 +49,15 @@ Télécharger les fichiers ici : http://jquery.com/download/
 
 Inclure dans sa page avec cette balise :
  
-```<script src="js/jquery.js" type="text/javascript"></script>``` que vous devez integrer a votre site entre les balises <head> et </head>
+```html
+<script src="js/jquery.js" type="text/javascript"></script>
+```
+que vous devez integrer a votre site entre les balises <head> et </head>
 
-Pour un démarrage rapide, voici le code HTML vous permettant d'accquerir jQuery sans avoir à le télécharger : <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" />  
-
------
+Pour un démarrage rapide, voici le code HTML vous permettant d'accquerir jQuery sans avoir à le télécharger : 
+```html
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" /> 
+```
 
 ## 3. Possibilités d'utilisation
 	
@@ -83,54 +85,59 @@ Pour selectionner une classe:  $(".classe")
 
 Pour selectionner un ID : $("#id").
 
------
-
 ## 4. Utilisation
 
 On utilise Velocity en remplaçant  animate() en JQuery par l'appel de velocity().
-Velocity() est syntaxiquement similaire à animate(), on peut donc utiliser le reste de la syntaxe de JQuery.  
+Velocity() est syntaxiquement similaire à animate(), on peut donc utiliser le reste de la syntaxe de JQuery.
+**NB: Pour que le mouvement se fasse il faut que l'objet soit en position relative (ou absolute) dans le fichier CSS. 
+Un élément définit en position relative sera le parent de l'élément en position absolute. Pour être clair, on peut ainsi les superposer. **
  
 Par exemple, pour le code utilisant JQuery :
 
-````$('#element').animate({
+```javascript
+$('#element').animate({
     left: '+=50'
 }, 1000);
-````
+```
 On va avoir ce code utilisant Velocity:
 
-````$('#element').velocity({
+```javascript
+$('#element').velocity({
 	   left: '+=50'
-	}, 1000);
-````
+	   }, 1000);
+```
 L'interet de Velocity.js est qu'il est plus rapide et dans certains cas, il raccourcit le code. Exemple des boucles:
 	
 Avec JQuery:
 
-````for (var i = 0; i < 5; i++) {
+```javascript
+for (var i = 0; i < 5; i++) {
     $div
 	/* Slide the element up by 100px. */
 	.animate({ top: -100 })
 	/* Then animate back to the original value. */
 	.animate({ top: 0 });}
-````
+```
 Avec Velocity, les boucles consistent simplement en la mise en place de l'option boucle avec un entier égal au nombre de boucles voulues.
 	
-```$div.velocity(
+```
+$div.velocity(
 	  { top: -100 }, 
-	  { loop: 5 });```
-
------
-
-## 5. Exemples
+	  { loop: 5 });
+```
+	
+## 5. Exemples 
 #### 5.1  Exemples concrets jQuery: 
-````$("p").dblclick(function(){
+```javascript
+$("p").dblclick(function(){
     $(this).hide();
 });
-````
+```
 Avec cet exemple nous ciblons tout les "p" et nous exécutons la fonction hide qui cible (this) donc les "p" avec l'action .dblclick (double clic).
 
-````$("p").on({
-mouseenter: function(){
+```javascript
+$("p").on({
+    mouseenter: function(){
 	$(this).css("background-color", "lightgray");
 }, 
 mouseleave: function(){
@@ -140,24 +147,44 @@ click: function(){
 	(this).css("background-color", "yellow");
 } 
 });
-````
+```
 Dans cet exemples il se passe trois animations, avec ".css" nous ajoutons du css lors d'une action précise sur un élément précis.
 
 #### 5.2 Exemples concrets Vélocity : 
 
-````$div.velocity("slideDown", function() { 
+```javascript
+$div.velocity("slideDown", function() { 
 /* Then fade in its children over a duration of 1000ms. */ 
 $children.velocity("fadeIn", 1000);
 });
-````
+```
+Un autre exemple rigolo made in Alice!!!:
 
------
+```javascript
+'use strict';
+$(document).ready(function(){
+    $('#red').on('click', function(){
+        $('#red').velocity({left: '1500px', rotateZ:'800deg'}, 1000).velocity({"reverse"}, 1000);    
+        //reverse: pour revenir en position initiale//
+    });
+
+    $('#green').on('click', function(){
+        $(this).css("border-radius", "200px").velocity({left: '1500px', rotateZ:'360deg'}, 1000).velocity({left: '0px', rotateZ:'0deg'}, 1000);    ;
+        
+        });
+});
+```
+
+Attention, dans l'exemple précédent, le reverse ne s'applique qu'à Velocity mais pas au CSS ainsi pour faire revenir l'objet à son état intial (ici un carré), il faudra inclure le border-radius dans Velocity
+
+```javascript
+$(this).velocity({left:'1500px', rotateZ:'360deg', borderRadius: '50px'},1000).velocity("reverse",1000);
+```
+
 
 ## 6. Appréciations
 
 Il s'avère que Velocity est très utile pour créer des animations, malgré une documentation peu claire. Velocity utilise la même syntaxe et options d'animations que jQuery ce qui rend son utilisation aisée. 
-
------
 
 ## 7. Sources et liens utiles
 
@@ -179,4 +206,5 @@ http://www.grafikart.fr/tutoriels/jquery/velocityjs-animation-jquery-506 ==> Tut
 
 http://libscore.com/#libs ==> Scanne et donne le top du mois des sites qui utilisent JavaScript Library.
 
-©COPYRIGHT SANGPEDRO - OURSANE - MEDY - AMBREA - KARENE - NIMO
+©COPYRIGHT SANGPEDRO - OURSANE - MEDY - AMBREA - KARENE - NIMO - Ilice - Raphiel - Jospin - Payet - RomG - Loulou - SAMRA - MARY - ALLAN - BEN - THOMAS - YOANN
+
