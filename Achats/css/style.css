@@ -1,31 +1,50 @@
 div {
-	padding: 20px;
+	padding : 20px;
 }
 
-.panier{
-font-size: 4em;
-float: right;
+.panier {
+font-size :  4em;
+float : right;
 }
 
-.chat .souris{
-	display:inline-block;
-	float:left;
+.chat .souris {
+	display : inline-block;
+}
+
+.add_cat {
+	position:relative;
+	left:0;
+}
+
+.add_cat2{
+	position:absolute;
+}
+
+.add_mouse{
+	position:relative;
+	left:0;
+}
+
+.add_mouse2{
+	position:absolute;
 }
 
 a:hover {
-	color: black;
+	color : black;
 }
 
-p{
-	border: solid 1px black;
-	width:150px;
+img {
+	width : 10%;
 }
 
-img{
-	width:10%;
+p {
+	border : solid 1px black;
+	width : 150px;
+	text-align: center;
 }
 
-.ajout{
-	font-size: 3em;
-	border: solid 1px blue;
+.ajout {
+	font-size : 3em;
+	border : solid 1px blue;
+	margin:1px;
 }
